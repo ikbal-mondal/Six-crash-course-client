@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/Context';
 
 const Header = () => {
+  const {user} = useContext(AuthContext)
     return (
         <div>
           <div className="navbar bg-gray-800 text-white ">
@@ -25,7 +27,11 @@ const Header = () => {
        <div className="swap-off bg-white text-black px-5 py-1 font-semibold shadow-2xl rounded-2xl">Light</div>
     </label>
 
-    <h2 className='ml-3'>user name</h2>
+    <li className='ml-3  my-6 bg-slate-500 px-3  shadow-2xl shadow-green-400 rounded-xl text-white font-semibold'>{user?.displayName ?  <p>Welcome: {user?.displayName}</p>
+        :
+        <>
+        </>
+        } </li>
 
       </ul>
     </div>
@@ -46,7 +52,11 @@ const Header = () => {
         <div className="swap-on bg-black text-white px-5 py-1 font-semibold shadow-2xl rounded-2xl">Dark</div>
        <div className="swap-off bg-white text-black px-5 py-1 font-semibold shadow-2xl rounded-2xl">Light</div>
     </label>
-        <li className='ml-3'><p>user name</p> </li>
+        <li className='ml-3 bg-slate-800 rounded px-3 my-0 shadow-2xl shadow-green-400  text-white font-semibold'>{user?.displayName ?  <p>Welcome: {user?.displayName}</p>
+        :
+        <>
+        </>
+        } </li>
     </ul>
     </div>
 
