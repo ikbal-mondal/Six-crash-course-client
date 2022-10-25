@@ -48,7 +48,7 @@ const Header = () => {
 
       </ul>
     </div>
-    <Link to='/' className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+    <Link to='/' className="btn btn-ghost normal-case text-xl">Six Crash Course</Link>
   </div>
   <div className="navbar-center hidden lg:flex ">
   <div className="items-centers justify-center ">

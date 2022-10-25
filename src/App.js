@@ -6,6 +6,7 @@ import Blog from "./Components/Header/HeaderTopic/Blog";
 import Register from "./Register_And_Login/Register/Register"
 import Login from "./Register_And_Login/LogIn/Login"
 import Error404page from "./Error404Page/Error404page";
+import DetailsCourseInfo from "./Course/DetailsCourseInfo";
 function App() {
 
   const router = createBrowserRouter([
@@ -34,6 +35,14 @@ function App() {
                return fetch('http://localhost:5000/allCourse')
             },
             element:<Courses></Courses>
+          },
+          {
+            path:'/courses/:id',
+            loader: ({params})  => {
+
+               return fetch(`http://localhost:5000/category/${params.id}`)
+            },
+            element:<DetailsCourseInfo></DetailsCourseInfo>
           },
           
           {
