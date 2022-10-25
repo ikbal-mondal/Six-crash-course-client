@@ -7,6 +7,9 @@ import Register from "./Register_And_Login/Register/Register"
 import Login from "./Register_And_Login/LogIn/Login"
 import Error404page from "./Error404Page/Error404page";
 import DetailsCourseInfo from "./Course/DetailsCourseInfo";
+
+import CheckOut from "./Course/Checkout/CheckOut";
+import Home from "./Components/Home/Home";
 function App() {
 
   const router = createBrowserRouter([
@@ -20,6 +23,10 @@ function App() {
           element:<Error404page></Error404page>
 
         },
+          {
+            path:'/home',
+            element:<Home></Home>
+          },
           {
             path:'/',
             loader: ()  => {
@@ -37,13 +44,23 @@ function App() {
             element:<Courses></Courses>
           },
           {
-            path:'/courses/:id',
+            path:'/detailsCourseInfo/:_id',
             loader: ({params})  => {
 
-               return fetch(`http://localhost:5000/category/${params.id}`)
+               return fetch(`http://localhost:5000/category/${params._id}`)
             },
             element:<DetailsCourseInfo></DetailsCourseInfo>
           },
+          
+          {
+            path:'/checkOut/:checkOutId',
+            loader: ({params})  => {
+
+               return fetch(`http://localhost:5000/category/${params.checkOutId}`)
+            },
+            element:<CheckOut></CheckOut>
+          },
+
           
           {
             path:'/faq',

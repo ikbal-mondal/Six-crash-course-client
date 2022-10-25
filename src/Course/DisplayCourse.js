@@ -1,10 +1,11 @@
 import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const DisplayCourse = ({course}) => {
-
-    const {title,image_url,Course_Fees  } = course
-
+     
+    const {title,image_url,Course_Fees , category_id } = course
+    
     return (
        
           <div className="">
@@ -16,7 +17,7 @@ const DisplayCourse = ({course}) => {
     <h2 className="card-title">Name: {title}</h2>
     <p>Course Fees : ${Course_Fees}</p>
     <div className="card-actions">
-      <button className="btn btn-primary"> More details  <FaArrowRight className='ml-2'></FaArrowRight> </button>
+     <Link to={`detailsCourseInfo/${category_id}`}> <button className="btn btn-primary"> More details  <FaArrowRight className='ml-2'></FaArrowRight> </button></Link>
     </div>
   </div>
 </div>
