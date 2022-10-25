@@ -1,9 +1,21 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/Context';
+import { FaSignInAlt } from 'react-icons/fa';
 
 const Header = () => {
-  const {user} = useContext(AuthContext)
+  const {user,logOut} = useContext(AuthContext)
+ 
+  const handleLogOut = () => {
+
+    logOut()
+    .then(result => {})
+    .catch(error => {
+     console.error(error)
+    })
+
+  }
+
     return (
         <div>
           <div className="navbar bg-gray-800 text-white ">
@@ -27,9 +39,10 @@ const Header = () => {
        <div className="swap-off bg-white text-black px-5 py-1 font-semibold shadow-2xl rounded-2xl">Light</div>
     </label>
 
-    <li className='ml-3  my-6 bg-slate-500 px-3  shadow-2xl shadow-green-400 rounded-xl text-white font-semibold'>{user?.displayName ?  <p>Welcome: {user?.displayName}</p>
+    <li className=' my-8 shadow-2xls mx-0  bg-slate-900 rounded-3xl shadow-white text-white '>{user?.email ?  <p>Welcome: {user?.email}</p>
         :
         <>
+
         </>
         } </li>
 
@@ -52,7 +65,7 @@ const Header = () => {
         <div className="swap-on bg-black text-white px-5 py-1 font-semibold shadow-2xl rounded-2xl">Dark</div>
        <div className="swap-off bg-white text-black px-5 py-1 font-semibold shadow-2xl rounded-2xl">Light</div>
     </label>
-        <li className='ml-3 bg-slate-800 rounded px-3 my-0 shadow-2xl shadow-green-400  text-white font-semibold'>{user?.displayName ?  <p>Welcome: {user?.displayName}</p>
+        <li className='ml-3 bg-slate-800 rounded px-3 my-0 shadow-2xl shadow-green-400  text-white font-semibold'>{user?.email ?  <p>Welcome: {user?.email}</p>
         :
         <>
         </>
@@ -62,7 +75,14 @@ const Header = () => {
 
   </div>
   <div className="navbar-end">
-   <Link to='/login' className='btn bg-slate-700 text-yellow-600 shadow-xl mx-3'>log in </Link>
+   {
+   
+   user?.uid ? 
+   <Link onClick={handleLogOut} className='btn btn-outline btn-error mx-3'> <FaSignInAlt className='mr-2'></FaSignInAlt> Log Out  </Link>
+   : 
+   <Link to='/login' className='btn btn-outline btn-success mx-3'> <FaSignInAlt className='mr-2'></FaSignInAlt> Log In  </Link> 
+
+    }
   </div>
 </div>
         </div>
