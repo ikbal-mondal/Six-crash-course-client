@@ -52,13 +52,13 @@ function App() {
 
                return fetch(`http://localhost:5000/category/${params.checkOutId}`)
             },
-            element:<CheckOut></CheckOut>
+            element:<PrivateRoute><CheckOut></CheckOut></PrivateRoute>
           },
 
           
           {
             path:'/faq',
-            element: <PrivateRoute><FAQ></FAQ></PrivateRoute>
+            element:<FAQ></FAQ>
           },
           {
             path:'/blog',

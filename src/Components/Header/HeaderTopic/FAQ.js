@@ -5,8 +5,8 @@ const FAQ = () => {
         <div>
            <section className="dark:bg-gray-800 dark:text-gray-100">
 	<div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
-		<h2 className="text-2xl font-semibold sm:text-4xl">Frequently Asked Questions</h2>
-		<p className="mt-4 mb-8 dark:text-gray-400">Sagittis tempor donec id vestibulum viverra. Neque condimentum primis orci at lacus amet bibendum.</p>
+		<h2 className="text-2xl font-semibold sm:text-4xl text-center mb-5">Frequently Asked Questions</h2>
+	
 		<div className="space-y-4">
 			<details className="w-full border rounded-lg">
 				<summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">Ex orci laoreet egestas sapien magna egestas scelerisque?</summary>

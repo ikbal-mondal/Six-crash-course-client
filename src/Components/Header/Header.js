@@ -1,29 +1,32 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../Contexts/Context';
-import { FaSignInAlt,FaSignOutAlt,FaSun,FaMoon, FaUserAlt } from 'react-icons/fa';
-import toast from 'react-hot-toast';
-
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Contexts/Context";
+import {
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaSun,
+  FaMoon,
+  FaUserAlt,
+} from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const Header = () => {
-const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  const {user,logOut} = useContext(AuthContext)
-  
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { user, logOut } = useContext(AuthContext);
+
   const handleLogOut = () => {
-
     logOut()
-    .then(result => {
-      toast.success('Log Out success')
-    })
-    .catch(error => {
-     console.error(error)
-    })
+      .then((result) => {
+        toast.success("Log Out success");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
-  }
-
-    return (
-      <div class="bg-gray-900">
+  return (
+    <div class="bg-gray-900">
       <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div class="relative flex items-center justify-between">
           <div class="flex items-center">
@@ -49,13 +52,13 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
                 <rect x="14" y="11" width="7" height="12" />
               </svg>
               <span class="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-              Six Crash Course
+                Six Crash Course
               </span>
             </a>
             <ul class="flex items-center hidden space-x-8 lg:flex">
               <li>
                 <Link
-                 to='/home'
+                  to="/home"
                   aria-label="Home"
                   title="Home"
                   class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
@@ -65,27 +68,27 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
               </li>
               <li>
                 <Link
-                  to='/courses'
+                  to="/courses"
                   aria-label="Our Courses"
                   title="Our Courses"
                   class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                 >
-                 Courses
+                  Courses
                 </Link>
               </li>
               <li>
                 <Link
-                to='/faq'
+                  to="/faq"
                   aria-label="Frequently Asked Questions"
                   title="Frequently Asked Questions"
                   class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                 >
-                FAQ
+                  FAQ
                 </Link>
               </li>
               <li>
                 <Link
-                to='/blog'
+                  to="/blog"
                   aria-label="Blog"
                   title="Blog"
                   class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
@@ -94,43 +97,61 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
                 </Link>
               </li>
               <li>
-              <label className="swap">
-      <input type="checkbox"   />
-      <div className="swap-on bg-black flex items-center text-white px-5 py-1 font-semibold shadow-2xl rounded-2xl">Dark<FaMoon></FaMoon></div>
-     <div className="swap-off bg-white flex items-center text-black px-5 py-1 font-semibold shadow-2xl rounded-2xl">Light<FaSun></FaSun></div>
-  </label>
+                <label className="swap">
+                  <input type="checkbox" />
+                  <div className="swap-on bg-black flex items-center text-white px-5 py-1 font-semibold shadow-2xl rounded-2xl">
+                    Dark<FaMoon></FaMoon>
+                  </div>
+                  <div className="swap-off bg-white flex items-center text-black px-5 py-1 font-semibold shadow-2xl rounded-2xl">
+                    Light<FaSun></FaSun>
+                  </div>
+                </label>
               </li>
             </ul>
           </div>
           <ul class="flex items-center hidden space-x-8 lg:flex">
             <li>
-            {
- 
- user?.uid ? 
-  <Link
-   aria-label={user?.email}
-  title={user?.email} >
-  <img style={{width:'40px', height: '40px', borderRadius:'50%'}} src={user?.photoURL} alt="" />
-  </Link> 
-   || <FaUserAlt style={{width:'40px', height: '40px', borderRadius:'50%'}}></FaUserAlt>
-  
- : 
- <>
- 
- </>
-  }
+              {user?.uid ? (
+                (
+                  <Link aria-label={user?.email} title={user?.email}>
+                    <img
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        borderRadius: "50%",
+                      }}
+                      src={user?.photoURL}
+                      alt=""
+                    />
+                  </Link>
+                ) || (
+                  <FaUserAlt
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "50%",
+                    }}
+                  ></FaUserAlt>
+                )
+              ) : (
+                <></>
+              )}
             </li>
             <li>
-            {
- 
- user?.uid ? 
- <Link onClick={handleLogOut} className='btn btn-outline btn-error mx-3'> <FaSignOutAlt></FaSignOutAlt> Log Out  </Link>
-  
- : 
- <Link to='/login' className='btn btn-outline btn-success mx-3'> <FaSignInAlt className='mr-2'></FaSignInAlt> Log In  </Link> 
-
-  }
-           
+              {user?.uid ? (
+                <Link
+                  onClick={handleLogOut}
+                  className="btn btn-outline btn-error mx-3"
+                >
+                  {" "}
+                  <FaSignOutAlt></FaSignOutAlt> Log Out{" "}
+                </Link>
+              ) : (
+                <Link to="/login" className="btn btn-outline btn-success mx-3">
+                  {" "}
+                  <FaSignInAlt className="mr-2"></FaSignInAlt> Log In Now{" "}
+                </Link>
+              )}
             </li>
           </ul>
           <div class="lg:hidden">
@@ -182,7 +203,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
                           <rect x="14" y="11" width="7" height="12" />
                         </svg>
                         <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                        <Link to='/home'>Home</Link>
+                          <Link to="/home">Home</Link>
                         </span>
                       </a>
                     </div>
@@ -204,20 +225,20 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
                   </div>
                   <nav>
                     <ul class="space-y-4">
-                    <li>
-                <Link
-                  to='/courses'
-                  aria-label="Our Courses"
-                  title="Our Courses"
-                  class="font-medium tracking-wide text-gray-700  transition-colors duration-200 hover:text-deep-purple-accent-400"
-                >
-                 Courses
-                </Link>
-              </li>
                       <li>
                         <Link
-                         to='/faq'
-                         aria-label="Frequently Asked Questions"
+                          to="/courses"
+                          aria-label="Our Courses"
+                          title="Our Courses"
+                          class="font-medium tracking-wide text-gray-700  transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        >
+                          Courses
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/faq"
+                          aria-label="Frequently Asked Questions"
                           title="Frequently Asked Questions"
                           class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
@@ -226,8 +247,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
                       </li>
                       <li>
                         <Link
-                          to='/blog'
-
+                          to="/blog"
                           aria-label="blog"
                           title="blog"
                           class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -236,39 +256,62 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
                         </Link>
                       </li>
                       <li>
-              <label className="swap">
-      <input type="checkbox"   />
-      <div className="swap-on bg-black flex items-center text-white px-5 py-1 font-semibold shadow-2xl rounded-2xl">Dark<FaMoon></FaMoon></div>
-     <div className="swap-off bg-white flex items-center text-black px-5 py-1 font-semibold shadow-2xl rounded-2xl">Light<FaSun></FaSun></div>
-  </label>
-              </li>
-              <li>
-            {
- 
- user?.uid ? 
-  <Link
-   aria-label={user?.email}
-  title={user?.email} >
-  <img style={{width:'40px', height: '40px', borderRadius:'50%'}} src={user?.photoURL} alt="" />
-  </Link> 
-   || <FaUserAlt style={{width:'40px', height: '40px', borderRadius:'50%'}}></FaUserAlt>
-  
- : 
- <>
- 
- </>
-  }
-            </li>
+                        <label className="swap">
+                          <input type="checkbox" />
+                          <div className="swap-on bg-black flex items-center text-white px-5 py-1 font-semibold shadow-2xl rounded-2xl">
+                            Dark<FaMoon></FaMoon>
+                          </div>
+                          <div className="swap-off bg-white flex items-center text-black px-5 py-1 font-semibold shadow-2xl rounded-2xl">
+                            Light<FaSun></FaSun>
+                          </div>
+                        </label>
+                      </li>
                       <li>
-                      {
- 
- user?.uid ? 
- <Link onClick={handleLogOut} className='btn btn-outline btn-error mx-3'> <FaSignOutAlt></FaSignOutAlt> Log Out  </Link>
-  
- : 
- <Link to='/login' className='btn btn-outline btn-success mx-3'> <FaSignInAlt className='mr-2'></FaSignInAlt> Log In  </Link> 
-
-  }
+                        {user?.uid ? (
+                          (
+                            <Link aria-label={user?.email} title={user?.email}>
+                              <img
+                                style={{
+                                  width: "40px",
+                                  height: "40px",
+                                  borderRadius: "50%",
+                                }}
+                                src={user?.photoURL}
+                                alt=""
+                              />
+                            </Link>
+                          ) || (
+                            <FaUserAlt
+                              style={{
+                                width: "40px",
+                                height: "40px",
+                                borderRadius: "50%",
+                              }}
+                            ></FaUserAlt>
+                          )
+                        ) : (
+                          <></>
+                        )}
+                      </li>
+                      <li>
+                        {user?.uid ? (
+                          <Link
+                            onClick={handleLogOut}
+                            className="btn btn-outline btn-error mx-3"
+                          >
+                            {" "}
+                            <FaSignOutAlt></FaSignOutAlt> Log Out{" "}
+                          </Link>
+                        ) : (
+                          <Link
+                            to="/login"
+                            className="btn btn-outline btn-success mx-3"
+                          >
+                            {" "}
+                            <FaSignInAlt className="mr-2"></FaSignInAlt> Log In
+                            Now{" "}
+                          </Link>
+                        )}
                       </li>
                     </ul>
                   </nav>
@@ -279,7 +322,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Header;
