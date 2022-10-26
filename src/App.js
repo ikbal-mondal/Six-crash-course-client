@@ -19,22 +19,15 @@ function App() {
       path:'/' , 
       element: <Main></Main> ,
        children:[
-        { 
-          path:'*',
-          element:<Error404page></Error404page>
-
-        },
+       
           {
-            path:'/home',
+            path:'/',
             element:<Home></Home>
           },
           {
-            path:'/',
-            loader: ()  => {
-
-              return fetch('http://localhost:5000/allCourse')
-           },
-            element:<Courses></Courses>
+            path:'/home',
+           
+            element: <Home></Home>
           },
           {
             path:'/courses',
@@ -45,7 +38,7 @@ function App() {
             element:<Courses></Courses>
           },
           {
-            path:'/detailsCourseInfo/:_id',
+            path:'courses/detailsCourseInfo/:_id',
             loader: ({params})  => {
 
                return fetch(`http://localhost:5000/category/${params._id}`)
@@ -78,8 +71,13 @@ function App() {
           {
             path:'/login',
             element: <Login></Login>
-          }
+          },
+          {
+            path:'*',
+            element:<Error404page></Error404page>
 
+          }
+          
        ]
      }
 
