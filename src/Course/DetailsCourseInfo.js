@@ -1,7 +1,16 @@
 import { Link, useLoaderData } from "react-router-dom";
-import ShowleftSidebar from "./sidebar/ShowleftSidebar";
+
+import ReactToPdf from "react-to-pdf";
+import { FaDownload } from "react-icons/fa";
+import React from "react";
 
 const DetailsCourseInfo = () => {
+  const options = {
+    orientation: 'landscape',
+    unit: 'in',
+    format: [4,2]
+};
+const ref = React.createRef();
   const course = useLoaderData();
   const { title, image_url, details, days, Course_Fees, category_id } = course;
   return (
@@ -12,9 +21,17 @@ const DetailsCourseInfo = () => {
             <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">
               {title}
             </h1>
-            <button className="btn btn-outline btn-primary mx-3">
-              Download Pdf
-            </button>
+           
+            <div>
+    <ReactToPdf targetRef={ref} filename="div-blue.pdf" options={options} x={.5} y={.5} scale={0.8}>
+        {({toPdf}) => (
+            <button className="btn btn-outline btn-primary" onClick={toPdf}>Generate pdf  
+            <FaDownload></FaDownload>
+             </button>
+        )}
+    </ReactToPdf>
+    <div style={{width: 2, height: 2, background: 'white'}} ref={ref}/>
+</div>
           </div>
           <div class="mt-8 lg:-mx-6 lg:flex lg:items-center">
             <img
