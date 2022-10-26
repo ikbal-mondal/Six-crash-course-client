@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/Context';
 import { FaSignInAlt,FaSignOutAlt,FaSun,FaMoon, FaUserAlt } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 
 const Header = () => {
@@ -12,7 +13,9 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleLogOut = () => {
 
     logOut()
-    .then(result => {})
+    .then(result => {
+      toast.success('Log Out success')
+    })
     .catch(error => {
      console.error(error)
     })
@@ -105,9 +108,9 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
  
  user?.uid ? 
   <Link
-   aria-label={user.email}
-  title={user.email} >
-  <img style={{width:'40px', height: '40px', borderRadius:'50%'}} src={user.photoURL} alt="" />
+   aria-label={user?.email}
+  title={user?.email} >
+  <img style={{width:'40px', height: '40px', borderRadius:'50%'}} src={user?.photoURL} alt="" />
   </Link> 
    || <FaUserAlt style={{width:'40px', height: '40px', borderRadius:'50%'}}></FaUserAlt>
   
@@ -239,16 +242,23 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
      <div className="swap-off bg-white flex items-center text-black px-5 py-1 font-semibold shadow-2xl rounded-2xl">Light<FaSun></FaSun></div>
   </label>
               </li>
-                      <li>
-                        <a
-                          href="/"
-                          aria-label="Sign in"
-                          title="Sign in"
-                          class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          Sign in
-                        </a>
-                      </li>
+              <li>
+            {
+ 
+ user?.uid ? 
+  <Link
+   aria-label={user?.email}
+  title={user?.email} >
+  <img style={{width:'40px', height: '40px', borderRadius:'50%'}} src={user?.photoURL} alt="" />
+  </Link> 
+   || <FaUserAlt style={{width:'40px', height: '40px', borderRadius:'50%'}}></FaUserAlt>
+  
+ : 
+ <>
+ 
+ </>
+  }
+            </li>
                       <li>
                       {
  
