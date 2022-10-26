@@ -2,8 +2,9 @@ import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+
 const DisplayCourse = ({course}) => {
-     
+
     const {title,image_url,Course_Fees , category_id } = course
     
     return (

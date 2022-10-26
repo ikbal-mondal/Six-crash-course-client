@@ -10,6 +10,7 @@ import DetailsCourseInfo from "./Course/DetailsCourseInfo";
 
 import CheckOut from "./Course/Checkout/CheckOut";
 import Home from "./Components/Home/Home";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 function App() {
 
   const router = createBrowserRouter([
@@ -64,7 +65,7 @@ function App() {
           
           {
             path:'/faq',
-            element: <FAQ></FAQ>
+            element: <PrivateRoute><FAQ></FAQ></PrivateRoute>
           },
           {
             path:'/blog',

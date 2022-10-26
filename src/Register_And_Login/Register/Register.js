@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
-import { Form, Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
+import { Form, Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/Context';
 
 const Register = () => {
-  const {createUser} = useContext(AuthContext)
-  
+  const {createUser,logOut} = useContext(AuthContext)
+  const [error,setError] = useState('')
+  const navigate = useNavigate()
   const handleSubmit = (event) => {
     event.preventDefault()
     const form = event.target;
@@ -13,13 +15,19 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(name,photoUrl,email,password);
+    setError('')
     createUser(email,password)
     .then(result => {
       const user = result.user;
       form.reset()
+      toast.success('Your Registration Successful')
+      logOut()
+      navigate('/login')
+    
     })
     .catch(error => {
      console.error(error)
+     setError(error.message)
     })
 
 
@@ -61,6 +69,7 @@ const Register = () => {
             <Link to='/login' className="label-text-alt link link-hover">You have a already account ? Please Log in now  </Link>
           </label>
         </div>
+        <p className='text-red-600'>{error}</p>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Register Now</button>
         </div>
