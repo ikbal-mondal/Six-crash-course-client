@@ -1,62 +1,69 @@
-import React, { createContext, useEffect, useState } from 'react';
-import app from '../Firebase.init/firebase.init';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from 'firebase/auth'
-export const AuthContext = createContext()
-const auth = getAuth(app)
-const Context = ({children}) => {
+import React, { createContext, useEffect, useState } from "react";
+import app from "../Firebase.init/firebase.init";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+export const AuthContext = createContext();
+const auth = getAuth(app);
+const Context = ({ children }) => {
+  const [user, setUser] = useState({});
 
-    const [user,setUser] = useState({})
- 
-  const createUser = (email,password)  => {
+  const createUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-    return createUserWithEmailAndPassword(auth,email,password)
-  }
+  const loginUser = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
- const loginUser = (email, password) => {
+  const loginWithGitHub = (provider) => {
+    return signInWithPopup(auth, provider);
+  };
 
-    return signInWithEmailAndPassword(auth,email,password)
+  const loginWithGoogle = (provider) => {
+    return signInWithPopup(auth, provider);
+  };
+
+
+ const updateUserProfile = (profile) => {
+    return updateProfile(auth.currentUser, profile)
  }
 
 
+  const logOut = () => {
+    return signOut(auth);
+  };
 
-   const loginWithGitHub = (provider) => {
-       
-      return signInWithPopup(auth,provider)
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (logInUser) => {
+      setUser(logInUser);
+      console.log("auth change", logInUser);
+    });
 
-   }
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
-   const loginWithGoogle = (provider) => {
-       
-     return signInWithPopup(auth,provider)
-   }
+  const authInfo = {
+    user,
+    loginWithGitHub,
+    loginWithGoogle,
+    createUser,
+    loginUser,
+    logOut,
+    updateUserProfile,
+  };
 
-   const logOut = () => {
- 
-    return  signOut(auth)
-
-   }
-
-    useEffect(() => {
-     const unsubscribe =   onAuthStateChanged(auth, logInUser => {
-             setUser(logInUser)
-             console.log('auth change' , logInUser);
-        })
-
-        return () => {
-            unsubscribe()
-        }
-    },[])
-
-
-
-    const authInfo = {user,loginWithGitHub,loginWithGoogle,createUser,loginUser,logOut}
-
-    return (
-       
-       <AuthContext.Provider value={authInfo}>
-       {children}
-       </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default Context;

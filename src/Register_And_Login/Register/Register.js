@@ -4,22 +4,23 @@ import { Form, Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/Context';
 
 const Register = () => {
-  const {createUser,logOut} = useContext(AuthContext)
+  const {createUser,logOut,updateUserProfile} = useContext(AuthContext)
   const [error,setError] = useState('')
   const navigate = useNavigate()
   const handleSubmit = (event) => {
     event.preventDefault()
     const form = event.target;
     const name = form.name.value;
-    const photoUrl = form.photoUrl.value;
+    const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name,photoUrl,email,password);
+    // console.log(name,photoURL,email,password);
     setError('')
     createUser(email,password)
     .then(result => {
       const user = result.user;
       form.reset()
+      handleUpdateProfile(name,photoURL);
       toast.success('Your Registration Successful')
       logOut()
       navigate('/login')
@@ -31,6 +32,19 @@ const Register = () => {
     })
 
 
+  }
+
+  const handleUpdateProfile = (name,photoURL) => {
+    const profile ={
+      displayName: name,
+      photoURL: photoURL,
+    }
+    updateUserProfile(profile)
+    .then(() => {})
+    .catch(error => {
+      console.error(error)
+     })
+ 
   }
 
     return (
@@ -52,7 +66,7 @@ const Register = () => {
           <label className="label">
             <span className="label-text">Photo Url</span>
           </label>
-          <input type="text" name='photoUrl' placeholder="Enter your Photo Url" className="input input-bordered" />
+          <input type="text" name='photoURL' placeholder="Enter your Photo Url" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">

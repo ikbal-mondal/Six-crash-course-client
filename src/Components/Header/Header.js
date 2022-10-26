@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/Context';
-import { FaSignInAlt,FaSignOutAlt,FaSun,FaMoon } from 'react-icons/fa';
+import { FaSignInAlt,FaSignOutAlt,FaSun,FaMoon, FaUserAlt } from 'react-icons/fa';
 
 
 const Header = () => {
@@ -101,14 +101,21 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
           </div>
           <ul class="flex items-center hidden space-x-8 lg:flex">
             <li>
-              <a
-                href="/"
-                aria-label="Sign in"
-                title="Sign in"
-                class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-              >
-                Sign in
-              </a>
+            {
+ 
+ user?.uid ? 
+  <Link
+   aria-label={user.email}
+  title={user.email} >
+  <img style={{width:'40px', height: '40px', borderRadius:'50%'}} src={user.photoURL} alt="" />
+  </Link> 
+   || <FaUserAlt style={{width:'40px', height: '40px', borderRadius:'50%'}}></FaUserAlt>
+  
+ : 
+ <>
+ 
+ </>
+  }
             </li>
             <li>
             {

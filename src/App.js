@@ -47,7 +47,7 @@ function App() {
           },
           
           {
-            path:'/checkOut/:checkOutId',
+            path:'checkOut/:checkOutId',
             loader: ({params})  => {
 
                return fetch(`http://localhost:5000/category/${params.checkOutId}`)
