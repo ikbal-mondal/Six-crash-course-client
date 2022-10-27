@@ -1,16 +1,11 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import ReactToPdf from "react-to-pdf";
-import { FaDownload } from "react-icons/fa";
 import React from "react";
+import ReactDOM from "react-dom";
+import Pdf from "react-to-pdf";
 
 const DetailsCourseInfo = () => {
-  const options = {
-    orientation: 'landscape',
-    unit: 'in',
-    format: [4,2]
-};
-const ref = React.createRef();
+  const ref = React.createRef();
   const course = useLoaderData();
   const { title, image_url, details, days, Course_Fees, category_id } = course;
   return (
@@ -22,17 +17,15 @@ const ref = React.createRef();
              {title}
             </h1>
            
-            <div>
-    <ReactToPdf targetRef={ref} filename="div-blue.pdf" options={options} x={.5} y={.5} scale={0.8}>
-        {({toPdf}) => (
-            <button className="btn btn-outline btn-primary" onClick={toPdf}>Generate pdf  
-            <FaDownload></FaDownload>
-             </button>
-        )}
-    </ReactToPdf>
-     <div style={{width: 10, height: 10, background: 'white'}}  ref={ref}/>
+            <Pdf targetRef={ref} filename="code-example.pdf">
+        {({ toPdf }) => <button className="btn-secondary btn " onClick={toPdf}>Generate Pdf</button>}
+      </Pdf>
+      <div ref={ref}>
+        <h1>{title}</h1>
        
-     </div>
+       <p>{details}</p>
+      </div>
+
           </div>
           <div class="mt-8 lg:-mx-6 lg:flex lg:items-center">
             <img
@@ -58,7 +51,7 @@ const ref = React.createRef();
               <div class="flex items-center mt-6">
                 <div class="mx-4">
                   <Link to={`/checkOut/${category_id}`}>
-                    {" "}
+                 
                     <button className="btn btn-outline btn-secondary mx-3">
                       Get Premium Access
                     </button>

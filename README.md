@@ -1,6 +1,6 @@
 # Six Crash Course
 
-## Live Site Link:[https://app/](https://.app/)
+## Live Site Link:[https://six-crash-course.web.app/](https://six-crash-course.web.app/)
 
 * There are six courses and each course is different. 
 

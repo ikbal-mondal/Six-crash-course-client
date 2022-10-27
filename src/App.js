@@ -7,11 +7,11 @@ import Register from "./Register_And_Login/Register/Register"
 import Login from "./Register_And_Login/LogIn/Login"
 import Error404page from "./Error404Page/Error404page";
 import DetailsCourseInfo from "./Course/DetailsCourseInfo";
-
 import CheckOut from "./Course/Checkout/CheckOut";
 import Home from "./Components/Home/Home";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import { Toaster } from "react-hot-toast";
+
 function App() {
 
   const router = createBrowserRouter([
@@ -34,7 +34,7 @@ function App() {
             path:'/courses',
             loader: ()  => {
 
-               return fetch('http://localhost:5000/allCourse')
+               return fetch('https://six-crash-course-server.vercel.app/allCourse')
             },
             element:<Courses></Courses>
           },
@@ -42,7 +42,7 @@ function App() {
             path:'courses/detailsCourseInfo/:_id',
             loader: ({params})  => {
 
-               return fetch(`http://localhost:5000/category/${params._id}`)
+               return fetch(`https://six-crash-course-server.vercel.app/category/${params._id}`)
             },
             element:<DetailsCourseInfo></DetailsCourseInfo>
           },
@@ -51,7 +51,7 @@ function App() {
             path:'checkOut/:checkOutId',
             loader: ({params})  => {
 
-               return fetch(`http://localhost:5000/category/${params.checkOutId}`)
+               return fetch(`https://six-crash-course-server.vercel.app/category/${params.checkOutId}`)
             },
             element:<PrivateRoute><CheckOut></CheckOut></PrivateRoute>
           },
@@ -88,6 +88,7 @@ function App() {
     <div className="App">
       <RouterProvider router={router}></RouterProvider>
       <Toaster />
+     
     </div>
   );
 }
