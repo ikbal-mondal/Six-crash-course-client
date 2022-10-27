@@ -14,6 +14,8 @@
 
 * Tailwind's framework desiui is used
 
+#### This application is responsive mobile device and desktop device and tablet device.
+
 * Using the react to pdf package.  PDF download system is done
 
 * react hot toast
