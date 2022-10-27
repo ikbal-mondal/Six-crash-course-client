@@ -1,6 +1,6 @@
 # Six Crash Course
 
-# Live Site Link:[https://app/](https://.app/)
+## Live Site Link:[https://app/](https://.app/)
 
 * There are six courses and each course is different. 
 
@@ -22,6 +22,5 @@
 
 #### Using Firebase, user registration and user login system is done.
 
- <sup>
- And here a private route is used where if the user is not logged in he will not be allowed to enter that route, if the user is logged in he will be able to enter that route.
-</sup>
+
+### And here a private route is used where if the user is not logged in he will not be allowed to enter that route, if the user is logged in he will be able to enter that route.
