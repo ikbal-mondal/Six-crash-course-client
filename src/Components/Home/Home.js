@@ -11,7 +11,7 @@ const Home = () => {
 			</div>
 			<div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
 				<h1 className="text-5xl font-bold leading-none sm:text-4xl">Welcome 
-					<span className="dark:text-violet-400 px-2">to </span> Our Course
+					<span className="dark:text-violet-400 px-2">to </span> Our Courses
 				</h1>
 				<p className="mt-6 mb-8 text-lg sm:mb-12">Dictum aliquam porta in condimentum ac integer
 					<br className="hidden md:inline lg:hidden"/>turpis pulvinar, est scelerisque ligula sem

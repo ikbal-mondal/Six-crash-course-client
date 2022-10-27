@@ -11,6 +11,7 @@ import DetailsCourseInfo from "./Course/DetailsCourseInfo";
 import CheckOut from "./Course/Checkout/CheckOut";
 import Home from "./Components/Home/Home";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import { Toaster } from "react-hot-toast";
 function App() {
 
   const router = createBrowserRouter([
@@ -86,6 +87,7 @@ function App() {
   return (
     <div className="App">
       <RouterProvider router={router}></RouterProvider>
+      <Toaster />
     </div>
   );
 }

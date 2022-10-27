@@ -11,9 +11,9 @@ const Blog = () => {
           <div className="text-center mb-6">
             <progress className="progress w-56  progress-primary "></progress>
           </div>
-          <div className="grid gap-10 md:gap-8 sm:p-3 md:grid-cols-2 lg:px-12 xl:px-32">
-            <div>
-              <h3 className="font-semibold my-4 text-5xl">What is cors?</h3>
+          <div className="grid gap-5 md:gap-8 sm:p-3 md:grid-cols-2 lg:px-12 xl:px-32">
+            <div className="shadow-2xl p-4">
+              <h3 className="font-semibold my-4 text-4xl">What is cors?</h3>
               <p className="mt-1 my-2 text-lg dark:text-gray-400">
                 Cross-Origin Resource Sharing (CORS) is an HTTP-header based
                 mechanism that allows a server to indicate any origins (domain,
@@ -34,8 +34,8 @@ const Blog = () => {
                 response from other origins includes the right CORS headers.
               </p>
             </div>
-            <div>
-              <h3 className="font-semibold my-4 text-4xl">
+            <div className="shadow-2xl p-4">
+              <h3 className="font-semibold my-4 text-3xl">
                 Why are you using firebase?
               </h3>
               <p className="mt-1 my-2 text-lg dark:text-gray-400">
@@ -60,8 +60,9 @@ const Blog = () => {
                 you are: biometrics, such as fingerprints and voice recognition.
               </p>
             </div>
-            <div className="">
-              <h3 className="font-semibold mb-3 text-4xl">
+           
+            <div className="shadow-2xl p-4">
+              <h3 className="font-semibold mb-3 text-3xl">
                 How does the private route work?
               </h3>
               <p className="mt-1 text-lg my-2 dark:text-gray-400">
@@ -77,8 +78,8 @@ const Blog = () => {
                 the application.
               </p>
             </div>
-            <div>
-              <h3 className="font-semibold my-4 text-4xl">What is Node? </h3>
+            <div className="shadow-2xl p-4">
+              <h3 className="font-semibold my-4 text-3xl">What is Node? </h3>
               <p className="mt-1 text-lg my-2 dark:text-gray-400">
                 Lorem ipsum dolor, sit amet Node allows developers to write
                 JavaScript code that runs directly in a computer process itself

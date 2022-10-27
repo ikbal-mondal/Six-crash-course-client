@@ -62,15 +62,16 @@ const Login = () => {
       <div className="hero min-h-screen bg-base-200">
         <Form
           onSubmit={handleLogInSubmit}
-          className="hero-content flex-col lg:flex-row-reverse bg-slate-300 shadow-2xl rounded"
+          className="hero-content flex-col lg:flex-row-reverse  shadow-2xl rounded"
         >
-          <div className="text-center lg:text-left">
+          
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-slate-900">
+          <div className="text-center mx-auto my-3">
             <div className="">
               <button
                 onClick={handleGoogleSignIn}
                 className="btn bg-black text-white px-6 my-2"
               >
-                {" "}
                 <FaGoogle className="text-2xl mr-2"></FaGoogle> log in width
                 google
               </button>
@@ -78,17 +79,20 @@ const Login = () => {
                 onClick={handleGitHubSignIn}
                 className="btn bg-black text-white px-6 my-2"
               >
-                {" "}
                 <FaGithub className="text-2xl mr-2"></FaGithub> log in width
                 github
               </button>
             </div>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="flex items-center w-8/12 mx-auto mb-0 my-4">
+		     <hr className="w-full dark:text-gray-400"/>
+		    <p className="px-3 text-white">OR</p>
+		    <hr className="w-full dark:text-gray-400"/>
+	     </div>        
             <div className="card-body">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-white">Email</span>
                 </label>
                 <input
                   type="email"
@@ -100,7 +104,7 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-white">Password</span>
                 </label>
                 <input
                   type="password"
@@ -112,7 +116,7 @@ const Login = () => {
                 <label className="label">
                   <Link
                     to="/register"
-                    className="label-text-alt link link-hover"
+                    className="label-text-alt link link-hover text-white"
                   >
                     No account yet? Registration
                   </Link>

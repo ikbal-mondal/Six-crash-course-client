@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/Context";
 import {
   FaSignInAlt,
@@ -12,12 +12,13 @@ import toast from "react-hot-toast";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const navigate = useNavigate()
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
       .then((result) => {
+        navigate('/')
         toast.success("Log Out success");
       })
       .catch((error) => {

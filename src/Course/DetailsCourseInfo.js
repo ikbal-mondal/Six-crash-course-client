@@ -19,7 +19,7 @@ const ref = React.createRef();
         <div class="container px-6 py-10 mx-auto">
           <div className="flex justify-between">
             <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">
-              {title}
+             {title}
             </h1>
            
             <div>
@@ -30,8 +30,9 @@ const ref = React.createRef();
              </button>
         )}
     </ReactToPdf>
-    <div style={{width: 2, height: 2, background: 'white'}} ref={ref}/>
-</div>
+     <div style={{width: 10, height: 10, background: 'white'}}  ref={ref}/>
+       
+     </div>
           </div>
           <div class="mt-8 lg:-mx-6 lg:flex lg:items-center">
             <img
